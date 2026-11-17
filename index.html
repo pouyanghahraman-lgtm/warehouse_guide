@@ -1,0 +1,58 @@
+﻿<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0E3A5F">
+  <meta name="description" content="برداشت سفارش از انبار با نمایش موقعیت روی نقشه">
+  <title>انبار هوشمند | برداشت سفارش</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+  <script>
+    // تم ذخیره‌شده قبل از نمایش صفحه (جلوگیری از چشمک زدن)
+    try { var t = localStorage.getItem('wh.theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="انبار هوشمند">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path d="M12 2 3 6.5v11L12 22l9-4.5v-11L12 2Zm0 2.2 6.8 3.4L12 11 5.2 7.6 12 4.2ZM5 9.3l6 3v7.3l-6-3V9.3Zm8 10.3v-7.3l6-3v7.3l-6 3Z" fill="currentColor"/></svg>
+      </span>
+      <div>
+        <h1>انبار هوشمند</h1>
+        <p id="subtitle">مدیریت و برداشت سفارش</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button id="btnTheme" class="icon-btn" data-action="theme" aria-label="تم تیره"></button>
+      <button id="btnHome" class="icon-btn" data-action="home" aria-label="بازگشت" hidden>
+        <svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="app" class="wrap" aria-live="polite"></main>
+
+  <input type="file" id="fileInput" accept=".xlsx,.xls" multiple hidden>
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="app.js"></script>
+  <script>
+    // ثبت کش آفلاین (فقط روی https یا localhost کار می‌کند)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => { navigator.serviceWorker.register('sw.js').catch(() => {}); });
+    }
+  </script>
+</body>
+</html>
+
