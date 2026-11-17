@@ -571,7 +571,7 @@
           <div class="stats">
             <div class="stat"><b>${fa(s.barcodes)}</b><span>بارکد</span></div>
             <div class="stat"><b>${fa(s.locations)}</b><span>محل ثبت‌شده</span></div>
-            <div class="stat"><b>${fa(s.codes)}</b><span>کد انبار</span></div>
+            <div class="stat"><b>${fa(s.codes)}</b><span>تعداد برچسب</span></div>
           </div>
         </section>`;
     }
